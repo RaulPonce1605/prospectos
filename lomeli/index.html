@@ -19,55 +19,102 @@ body{margin:0;background:#FFFFFF}
 a{color:#B50E26}a:hover{color:#850A1C}
 h1,h2,h3{font-family:'Archivo',system-ui,sans-serif;margin:0;color:#111111;letter-spacing:-0.01em}
 p{margin:0}
+.nav-links{display:flex}
+.menu-btn{display:none}
+.mobile-bar{display:none}
+.chips-scroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.chips-scroll::-webkit-scrollbar{display:none}
+@media (max-width: 760px){
+.nav-links{display:none !important}
+.menu-btn{display:inline-flex !important}
+.mobile-bar{display:flex !important}
+.filters{display:none !important}
+.filters.open{display:flex !important;max-width:none !important;flex-basis:100% !important}
+.sortrow{flex-wrap:nowrap !important;overflow-x:auto;width:100%;scrollbar-width:none}
+.hero-img{order:-1;min-height:220px !important;max-height:250px}
+.hero-text{padding:26px 22px 30px !important;gap:16px !important}
+.stats{grid-template-columns:1fr 1fr !important;gap:12px !important}
+.stat-desc{display:none}
+.wa-cta{width:100%;text-align:center;box-sizing:border-box}
+}
+@media (max-width: 560px){
+.cars{grid-template-columns:1fr 1fr !important;gap:16px 12px !important}
+.car-title{font-size:0.9375rem !important}
+.car-version{display:none}
+.car-price{font-size:1.125rem !important}
+.car-btn{padding:8px 6px !important;font-size:0.8125rem}
+.car-badge{font-size:0.6875rem !important;padding:3px 7px !important;left:8px !important;bottom:8px !important}
+.wrap{padding-left:16px !important;padding-right:16px !important}
+}
 </style>
 </helmet>
 <div style="font-family: 'Inter', system-ui, sans-serif; color: #1A1A1A; background: #FFFFFF; font-size: 1rem; line-height: 1.55">
 
 <header style="background: #FFFFFF; border-bottom: 1px solid #ECECEC; position: sticky; top: 0; z-index: 20">
-<nav style="max-width: 1280px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<nav class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 10px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
 <a href="#inicio" style="text-decoration: none; display: flex; align-items: center"><img src="./assets/2ebc563b1d8e90ce8cdf48e9d683e557.png" alt="Automotriz Lomelí" style="display: block; width: 64px; height: 64px"></a>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px; font-weight: 600; font-size: 0.9375rem">
+<div style="display: flex; align-items: center; gap: 14px">
+<div class="nav-links" style="flex-wrap: wrap; align-items: center; gap: 22px; font-weight: 600; font-size: 0.9375rem">
 <a href="#inventario" style="text-decoration: none; color: #1A1A1A">Comprar</a>
 <a href="#financiamiento" style="text-decoration: none; color: #1A1A1A">Financiamiento</a>
 <a href="#sucursales" style="text-decoration: none; color: #1A1A1A">Sucursales</a>
 <a href="#nosotros" style="text-decoration: none; color: #1A1A1A">Nosotros</a>
-<a href="https://wa.me/524499078817" style="text-decoration: none; background: #C8102E; color: #FFFFFF; padding: 11px 20px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Escríbenos</a>
+</div>
+<a href="https://wa.me/524499078817" style="text-decoration: none; background: #C8102E; color: #FFFFFF; padding: 11px 20px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; font-weight: 600; font-size: 0.9375rem">Escríbenos</a>
+<button type="button" class="menu-btn" onClick="{{toggleMenu}}" aria-label="Abrir menú" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid #E2E2E2; background: #FFFFFF; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
 </div>
 </nav>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+<div style="border-top: 1px solid #ECECEC; padding: 8px 16px 16px; display: flex; flex-direction: column; background: #FFFFFF">
+<a href="#inventario" onClick="{{closeMenu}}" style="text-decoration: none; color: #111111; font-weight: 600; font-size: 1.0625rem; padding: 14px 4px; border-bottom: 1px solid #F0F0F0">Comprar</a>
+<a href="#financiamiento" onClick="{{closeMenu}}" style="text-decoration: none; color: #111111; font-weight: 600; font-size: 1.0625rem; padding: 14px 4px; border-bottom: 1px solid #F0F0F0">Financiamiento</a>
+<a href="#sucursales" onClick="{{closeMenu}}" style="text-decoration: none; color: #111111; font-weight: 600; font-size: 1.0625rem; padding: 14px 4px; border-bottom: 1px solid #F0F0F0">Sucursales</a>
+<a href="#nosotros" onClick="{{closeMenu}}" style="text-decoration: none; color: #111111; font-weight: 600; font-size: 1.0625rem; padding: 14px 4px">Nosotros</a>
+</div>
+</sc-if>
 </header>
 
-<section id="inicio" style="max-width: 1280px; margin: 0 auto; padding: 20px 24px 0">
+<section id="inicio" class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 20px 24px 0">
 <div style="background: #111111; border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); align-items: center">
-<div style="padding: clamp(32px, 5vw, 64px); display: flex; flex-direction: column; gap: 20px">
+<div class="hero-text" style="padding: clamp(32px, 5vw, 64px); display: flex; flex-direction: column; gap: 20px">
 <div style="display: flex; align-items: center; gap: 14px"><img src="./assets/2ebc563b1d8e90ce8cdf48e9d683e557.png" alt="" style="display: block; width: 72px; height: 72px"><span style="border: 1px solid #C8102E; color: #FFFFFF; font-weight: 600; font-size: 0.8125rem; padding: 6px 14px; border-radius: 999px">Más de 30 años en Aguascalientes</span></div>
-<h1 style="color: #FFFFFF; font-size: clamp(2.5rem, 5vw, 3.75rem); line-height: 1.02">La sensación de estrenar, sin pagar precio de nuevo.</h1>
+<h1 style="color: #FFFFFF; font-size: clamp(2.125rem, 5vw, 3.75rem); line-height: 1.02">La sensación de estrenar, sin pagar precio de nuevo.</h1>
 <p style="color: #CFCFCF; font-size: 1.125rem; max-width: 32rem">Más de 100 seminuevos listos para ti, con opciones de financiamiento y dos sucursales en la ciudad.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px">
 <a href="#inventario" style="text-decoration: none; background: #C8102E; color: #FFFFFF; font-weight: 700; padding: 15px 26px; border-radius: 999px">Ver inventario</a>
 <a href="#financiamiento" style="text-decoration: none; color: #FFFFFF; font-weight: 700; padding: 15px 26px; border-radius: 999px; border: 2px solid #FFFFFF">Cotiza tu crédito</a>
 </div>
 </div>
-<img src="./assets/5301ddae2595902fc24edf070d728e5c.jpg" alt="Cupra León 2022 blanco en el lote de Automotriz Lomelí" style="display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover">
+<img src="./assets/5301ddae2595902fc24edf070d728e5c.jpg" alt="Cupra León 2022 blanco en el lote de Automotriz Lomelí" class="hero-img" style="display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover">
 </div>
 </section>
 
-<section id="inventario" style="max-width: 1280px; margin: 0 auto; padding: 32px 24px 88px; display: flex; flex-direction: column; gap: 22px">
+<section id="inventario" class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px 24px 88px; display: flex; flex-direction: column; gap: 22px">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
 <div>
 <h2 style="font-size: clamp(1.75rem, 3vw, 2.25rem)">Autos seminuevos en Aguascalientes</h2>
 <p style="color: #5E5E5E">Mostrando {{count}} autos destacados · <a href="https://vehiculos.mercadolibre.com.mx/_CustId_98443579" style="font-weight: 600">Ver el catálogo completo</a></p>
 </div>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
-<span style="font-size: 0.875rem; color: #5E5E5E; font-weight: 600">Ordenar:</span>
+<div class="sortrow" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<span style="font-size: 0.875rem; color: #5E5E5E; font-weight: 600; flex-shrink: 0">Ordenar:</span>
 <sc-for list="{{sorts}}" as="s" hint-placeholder-count="4">
-<sc-if value="{{s.on}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{s.pick}}" style="font-family: inherit; font-size: 0.875rem; font-weight: 600; min-height: 40px; padding: 8px 14px; border-radius: 999px; border: 1px solid #111111; background: #111111; color: #FFFFFF; cursor: pointer">{{s.label}}</button></sc-if>
-<sc-if value="{{s.off}}" hint-placeholder-val="{{true}}"><button type="button" onClick="{{s.pick}}" style="font-family: inherit; font-size: 0.875rem; font-weight: 600; min-height: 40px; padding: 8px 14px; border-radius: 999px; border: 1px solid #D9D9D9; background: #FFFFFF; color: #1A1A1A; cursor: pointer">{{s.label}}</button></sc-if>
+<sc-if value="{{s.on}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{s.pick}}" style="font-family: inherit; font-size: 0.875rem; font-weight: 600; min-height: 40px; padding: 8px 14px; border-radius: 999px; flex-shrink: 0; white-space: nowrap; border: 1px solid #111111; background: #111111; color: #FFFFFF; cursor: pointer">{{s.label}}</button></sc-if>
+<sc-if value="{{s.off}}" hint-placeholder-val="{{true}}"><button type="button" onClick="{{s.pick}}" style="font-family: inherit; font-size: 0.875rem; font-weight: 600; min-height: 40px; padding: 8px 14px; border-radius: 999px; flex-shrink: 0; white-space: nowrap; border: 1px solid #D9D9D9; background: #FFFFFF; color: #1A1A1A; cursor: pointer">{{s.label}}</button></sc-if>
 </sc-for>
 </div>
 </div>
 
+<div class="mobile-bar" style="flex-direction: column; gap: 12px">
+<button type="button" onClick="{{toggleFilters}}" style="font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border-radius: 14px; border: 1px solid #111111; background: #FFFFFF; color: #111111; font-weight: 700; font-size: 1rem; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>{{filtersLabel}}</button>
+<div class="chips-scroll">
+<sc-for list="{{types}}" as="t" hint-placeholder-count="6">
+<sc-if value="{{t.on}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{t.pick}}" style="font-family: inherit; flex-shrink: 0; white-space: nowrap; font-size: 0.875rem; font-weight: 700; min-height: 40px; padding: 8px 16px; border-radius: 999px; border: 2px solid #111111; background: #111111; color: #FFFFFF; cursor: pointer">{{t.label}}</button></sc-if>
+<sc-if value="{{t.off}}" hint-placeholder-val="{{true}}"><button type="button" onClick="{{t.pick}}" style="font-family: inherit; flex-shrink: 0; white-space: nowrap; font-size: 0.875rem; font-weight: 500; min-height: 40px; padding: 8px 16px; border-radius: 999px; border: 1px solid #D9D9D9; background: #FFFFFF; color: #1A1A1A; cursor: pointer">{{t.label}}</button></sc-if>
+</sc-for>
+</div>
+</div>
 <div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start">
-<aside style="flex: 1 1 260px; max-width: 300px; border: 1px solid #ECECEC; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 22px; box-sizing: border-box">
+<aside class="{{filtersClass}}" style="flex: 1 1 260px; max-width: 300px; border: 1px solid #ECECEC; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 22px; box-sizing: border-box">
 <div style="display: flex; justify-content: space-between; align-items: center">
 <p style="font-weight: 700; font-size: 1.0625rem">Filtros</p>
 <button type="button" onClick="{{clear}}" style="font-family: inherit; font-size: 0.875rem; font-weight: 600; background: none; border: none; color: #B50E26; text-decoration: underline; cursor: pointer; min-height: 32px">Limpiar todo</button>
@@ -105,22 +152,22 @@ p{margin:0}
 <button type="button" onClick="{{clear}}" style="font-family: inherit; font-weight: 700; min-height: 44px; padding: 10px 20px; border-radius: 999px; border: none; background: #111111; color: #FFFFFF; cursor: pointer">Limpiar filtros</button>
 </div>
 </sc-if>
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 22px">
+<div class="cars" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 22px">
 <sc-for list="{{cars}}" as="c" hint-placeholder-count="9">
 <article style="display: flex; flex-direction: column; gap: 10px">
 <div style="position: relative">
 <img src="{{c.img}}" alt="{{c.alt}}" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; background: #F0F0F0">
-<sc-if value="{{c.hasBadge}}" hint-placeholder-val="{{false}}"><span style="position: absolute; left: 12px; bottom: 12px; background: #C8102E; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; padding: 5px 10px; border-radius: 8px">{{c.badge}}</span></sc-if>
+<sc-if value="{{c.hasBadge}}" hint-placeholder-val="{{false}}"><span class="car-badge" style="position: absolute; left: 12px; bottom: 12px; background: #C8102E; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; padding: 5px 10px; border-radius: 8px">{{c.badge}}</span></sc-if>
 </div>
 <div style="display: flex; flex-direction: column; gap: 2px">
 <p style="font-size: 0.8125rem; color: #5E5E5E">Aguascalientes</p>
 <p style="font-weight: 700">{{c.year}}</p>
-<h3 style="font-size: 1.1875rem; line-height: 1.2">{{c.name}}</h3>
-<p style="font-size: 0.875rem; color: #5E5E5E">{{c.version}}</p>
-<p style="font-size: 0.875rem; color: #5E5E5E">{{c.km}} km · {{c.trans}}</p>
+<h3 class="car-title" style="font-size: 1.1875rem; line-height: 1.2">{{c.name}}</h3>
+<p class="car-version" style="font-size: 0.875rem; color: #5E5E5E">{{c.version}}</p>
+<p style="font-size: 0.8125rem; color: #5E5E5E">{{c.km}} km · {{c.trans}}</p>
 </div>
-<p style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.5rem; color: #111111">{{c.price}}</p>
-<a href="{{c.wa}}" style="text-decoration: none; text-align: center; border: 2px solid #111111; color: #111111; font-weight: 700; padding: 10px 14px; border-radius: 999px">Me interesa</a>
+<p class="car-price" style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.5rem; color: #111111">{{c.price}}</p>
+<a href="{{c.wa}}" class="car-btn" style="text-decoration: none; text-align: center; border: 2px solid #111111; color: #111111; font-weight: 700; padding: 10px 14px; border-radius: 999px">Me interesa</a>
 </article>
 </sc-for>
 </div>
@@ -130,7 +177,7 @@ p{margin:0}
 </section>
 
 <section id="financiamiento" style="background: #111111; color: #FFFFFF">
-<div style="max-width: 1280px; margin: 0 auto; padding: 88px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 48px; align-items: center">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 64px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 36px; align-items: center">
 <div style="display: flex; flex-direction: column; gap: 18px">
 <h2 style="color: #FFFFFF; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05">Deja de preguntarte si puedes comprarlo. Empieza por cotizarlo.</h2>
 <p style="color: #CFCFCF; font-size: 1.125rem">Contamos con opciones de financiamiento para que conozcas tus posibilidades antes de decidir.</p>
@@ -156,28 +203,28 @@ p{margin:0}
 </div>
 </section>
 
-<section id="nosotros" style="max-width: 1280px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 36px">
+<section id="nosotros" class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 36px">
 <h2 style="font-size: clamp(2rem, 4vw, 2.75rem); max-width: 40rem; line-height: 1.08">Por qué comprar en Automotriz Lomelí</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 18px">
+<div class="stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 18px">
 <div style="border: 1px solid #ECECEC; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
 <p style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1; color: #C8102E">+30</p>
 <p style="font-weight: 700">Años en el mercado</p>
-<p style="color: #5E5E5E">Familias de Aguascalientes nos han confiado su auto por tres décadas.</p>
+<p class="stat-desc" style="color: #5E5E5E">Familias de Aguascalientes nos han confiado su auto por tres décadas.</p>
 </div>
 <div style="border: 1px solid #ECECEC; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
 <p style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1; color: #C8102E">+100</p>
 <p style="font-weight: 700">Autos disponibles</p>
-<p style="color: #5E5E5E">SUV, sedanes, hatchbacks y pick-ups de las marcas que buscas.</p>
+<p class="stat-desc" style="color: #5E5E5E">SUV, sedanes, hatchbacks y pick-ups de las marcas que buscas.</p>
 </div>
 <div style="border: 1px solid #ECECEC; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
 <p style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1; color: #C8102E">2</p>
 <p style="font-weight: 700">Sucursales</p>
-<p style="color: #5E5E5E">Norte y sur de la ciudad, para que nos visites donde te quede mejor.</p>
+<p class="stat-desc" style="color: #5E5E5E">Norte y sur de la ciudad, para que nos visites donde te quede mejor.</p>
 </div>
 <div style="border: 1px solid #ECECEC; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
 <p style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1; color: #C8102E">$</p>
 <p style="font-weight: 700">Financiamiento</p>
-<p style="color: #5E5E5E">Opciones de crédito para que el auto que quieres sí sea posible.</p>
+<p class="stat-desc" style="color: #5E5E5E">Opciones de crédito para que el auto que quieres sí sea posible.</p>
 </div>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 18px">
@@ -200,9 +247,9 @@ p{margin:0}
 </section>
 
 <section id="sucursales" style="background: #F5F5F4">
-<div style="max-width: 1280px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 32px">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 28px">
 <h2 style="font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.08">Visítanos en nuestras sucursales</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 22px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 22px">
 <div style="background: #FFFFFF; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
 <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Eugenio+Garza+Sada+50+Los+Pocitos+Aguascalientes" style="position: relative; display: block">
 <svg viewBox="0 0 600 260" role="img" aria-label="Mapa ilustrativo de la sucursal Norte, Av. Eugenio Garza Sada 50, Los Pocitos" style="display: block; width: 100%; height: auto">
@@ -245,18 +292,18 @@ p{margin:0}
 </div>
 </section>
 
-<section style="max-width: 1280px; margin: 0 auto; padding: 88px 24px">
+<section class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 64px 24px">
 <div style="background: #C8102E; border-radius: 28px; padding: clamp(32px, 6vw, 60px); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
 <div style="display: flex; flex-direction: column; gap: 10px; max-width: 40rem">
 <h2 style="color: #FFFFFF; font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.05">Tu próximo auto ya te está esperando.</h2>
 <p style="color: #FFE3E7; font-size: 1.125rem">Mándanos mensaje y te ayudamos a encontrar tu seminuevo ideal.</p>
 </div>
-<a href="https://wa.me/524499078817" style="text-decoration: none; background: #FFFFFF; color: #B50E26; font-weight: 800; padding: 16px 28px; border-radius: 999px">WhatsApp 449 907 8817</a>
+<a href="https://wa.me/524499078817" class="wa-cta" style="text-decoration: none; background: #FFFFFF; color: #B50E26; font-weight: 800; padding: 16px 28px; border-radius: 999px">WhatsApp 449 907 8817</a>
 </div>
 </section>
 
 <footer style="background: #111111; color: #BDBDBD">
-<div style="max-width: 1280px; margin: 0 auto; padding: 48px 24px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 28px">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 48px 24px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 28px">
 <div style="display: flex; flex-direction: column; gap: 8px">
 <img src="./assets/2ebc563b1d8e90ce8cdf48e9d683e557.png" alt="Automotriz Lomelí" style="display: block; width: 96px; height: 96px">
 <p>Seminuevos en Aguascalientes desde hace más de 30 años.</p>
@@ -284,26 +331,26 @@ p{margin:0}
 class Component extends DCLogic {
 constructor(props) {
 super(props);
-this.state = { type: 'Todos', price: 'all', sort: 'rec' };
+this.state = { type: 'Todos', price: 'all', sort: 'rec', menuOpen: false, filtersOpen: false };
 }
 renderVals() {
 const B = '/_blob/';
 const CARS = [
-{ id: 'gladiator', img: B + '2e73ef8f2b684138a4bf294c3619af7a', year: 2023, name: 'Jeep · Gladiator', version: 'Mojave 4x4, 3.6', km: 27000, trans: 'Automática', price: 1069000, type: 'Pick-Up' },
+{ id: 'gladiator', img: B + '1b1f09d75302e1c4124489eabcc5e061', year: 2023, name: 'Jeep · Gladiator', version: 'Mojave 4x4, 3.6', km: 27000, trans: 'Automática', price: 1069000, type: 'Pick-Up' },
 { id: 'cupra', img: './assets/5301ddae2595902fc24edf070d728e5c.jpg', year: 2022, name: 'Cupra · León', version: '300 hp', km: 49000, trans: 'Automática', price: 509000, type: 'Hatchback' },
-{ id: 'glc', img: B + '11dcb8bd357f2181305aa3f81fd8f6d7', year: 2022, name: 'Mercedes-Benz · GLC 300', version: '2.0 Sport', km: 85000, trans: 'Automática', price: 579000, type: 'SUV' },
-{ id: 'formentor', img: B + '7f4dd88f7193bedbfe08434efdb660ef', year: 2023, name: 'Cupra · Formentor', version: 'VZ 310 hp 4WD', km: 33000, trans: 'DSG', price: 595000, type: 'SUV' },
-{ id: 'xtrail', img: B + '69c086feca311c35a0dcc4971cdcc01b', year: 2025, name: 'Nissan · X-Trail e-Power', version: '1.5 Exclusive', km: 13000, trans: 'CVT', price: 559000, type: 'SUV' },
-{ id: 'x2', img: B + '5c98fe9e45561703f43bacc4c100bc98', year: 2023, name: 'BMW · X2', version: 'sDrive20ia Goldplay', km: 54000, trans: 'Automática', price: 579000, type: 'SUV' },
-{ id: 'glb', img: B + '87290bb48a6830f26a331690086b53f7', year: 2023, name: 'Mercedes-Benz · GLB 200', version: 'Progressive Line', km: 66000, trans: 'Automática', price: 589000, type: 'SUV' },
-{ id: 'tucson', img: B + 'e2de30fd0523ebdadc33498efa0fde23', year: 2024, name: 'Hyundai · Tucson', version: '2.5 GLS', km: 31000, trans: 'Automática', price: 429000, type: 'SUV' },
-{ id: 'a3', img: B + '5079a0bcba5efe50b851ad21f3357816', year: 2023, name: 'Audi · A3 Sedán', version: '35 TFSI Dynamic', km: 33000, trans: 'DSG', price: 435000, type: 'Sedán' },
-{ id: 'seltos', img: B + 'cead7fa35d63669333f2e9f184a07cfc', year: 2023, name: 'Kia · Seltos', version: '1.6 GT-Line', km: 72000, trans: 'Automática', price: 379000, type: 'SUV' },
-{ id: 'odyssey', img: B + '6f518669bf437e6ce5c1876548a1818a', year: 2022, name: 'Honda · Odyssey', version: '3.5 Touring', km: 55000, trans: 'Automática', price: 585000, type: 'Van' },
-{ id: 'tacoma', img: B + '86685738b64289346d79b6c1a8f95d78', year: 2020, name: 'Toyota · Tacoma', version: '3.5 TRD Sport', km: 69000, trans: 'Automática', price: 559000, type: 'Pick-Up' },
-{ id: 'mini', img: B + '37542bd5b84fde74993159bc89659622', year: 2022, name: 'MINI · Cooper', version: 'Chili 5 puertas', km: 41000, trans: 'Automática', price: 349000, type: 'Hatchback' },
-{ id: 'tiguan', img: B + '7652d95372e95091748c597b53c52e8b', year: 2022, name: 'Volkswagen · Tiguan', version: '1.4 Trendline Plus', km: 41000, trans: 'Automática', price: 349000, type: 'SUV' },
-{ id: 'captiva', img: B + '6ef26b0c11d2b40d31a898ed45f69ef7', year: 2023, name: 'Chevrolet · Captiva', version: '1.5 Premier 7 pasajeros', km: 27000, trans: 'CVT', price: 309000, type: 'SUV' }
+{ id: 'glc', img: B + 'cf5fd423cd2d7bc0ffdc511664516c3f', year: 2022, name: 'Mercedes-Benz · GLC 300', version: '2.0 Sport', km: 85000, trans: 'Automática', price: 579000, type: 'SUV' },
+{ id: 'formentor', img: B + 'b44b4c95b20b8b38ccf67b8991fa2bd8', year: 2023, name: 'Cupra · Formentor', version: 'VZ 310 hp 4WD', km: 33000, trans: 'DSG', price: 595000, type: 'SUV' },
+{ id: 'xtrail', img: B + '8dd0061fbe345b6dd5758b5a42d5a148', year: 2025, name: 'Nissan · X-Trail e-Power', version: '1.5 Exclusive', km: 13000, trans: 'CVT', price: 559000, type: 'SUV' },
+{ id: 'x2', img: B + '2698486cb1c1cebd9b20296fbaf5cf70', year: 2023, name: 'BMW · X2', version: 'sDrive20ia Goldplay', km: 54000, trans: 'Automática', price: 579000, type: 'SUV' },
+{ id: 'glb', img: B + 'b19bdd66220bdf325b4233deded42759', year: 2023, name: 'Mercedes-Benz · GLB 200', version: 'Progressive Line', km: 66000, trans: 'Automática', price: 589000, type: 'SUV' },
+{ id: 'tucson', img: B + '7202fca5003581511546b3f59522ba8b', year: 2024, name: 'Hyundai · Tucson', version: '2.5 GLS', km: 31000, trans: 'Automática', price: 429000, type: 'SUV' },
+{ id: 'a3', img: B + '4eda2f697db4c5246961d8b63b9c4d52', year: 2023, name: 'Audi · A3 Sedán', version: '35 TFSI Dynamic', km: 33000, trans: 'DSG', price: 435000, type: 'Sedán' },
+{ id: 'seltos', img: B + 'a2f228157d604287407955d85ab23cb5', year: 2023, name: 'Kia · Seltos', version: '1.6 GT-Line', km: 72000, trans: 'Automática', price: 379000, type: 'SUV' },
+{ id: 'odyssey', img: B + 'f5190281006a764500e08f56b195fa6f', year: 2022, name: 'Honda · Odyssey', version: '3.5 Touring', km: 55000, trans: 'Automática', price: 585000, type: 'Van' },
+{ id: 'tacoma', img: B + 'ac8e8b05bdaedf94e063f19a00ca18dd', year: 2020, name: 'Toyota · Tacoma', version: '3.5 TRD Sport', km: 69000, trans: 'Automática', price: 559000, type: 'Pick-Up' },
+{ id: 'mini', img: B + 'e3b1ce0d79dca0014db2fbb613169876', year: 2022, name: 'MINI · Cooper', version: 'Chili 5 puertas', km: 41000, trans: 'Automática', price: 349000, type: 'Hatchback' },
+{ id: 'tiguan', img: B + '6dfe4b320e78ec5a9e0226380e04b7e9', year: 2022, name: 'Volkswagen · Tiguan', version: '1.4 Trendline Plus', km: 41000, trans: 'Automática', price: 349000, type: 'SUV' },
+{ id: 'captiva', img: B + '97f3fab9105a69b10c5c2cd88230aa33', year: 2023, name: 'Chevrolet · Captiva', version: '1.5 Premier 7 pasajeros', km: 27000, trans: 'CVT', price: 309000, type: 'SUV' }
 ];
 const st = this.state;
 const money = (n) => '$' + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -325,7 +372,13 @@ empty: cars.length === 0,
 types: mk([['Todos', 'Todos'], ['SUV', 'SUV'], ['Sedán', 'Sedán'], ['Hatchback', 'Hatchback'], ['Pick-Up', 'Pick-Up'], ['Van', 'Van']], 'type'),
 prices: mk([['all', 'Cualquier precio'], ['a', 'Hasta $400,000'], ['b', '$400,000 a $600,000'], ['c', 'Más de $600,000']], 'price'),
 sorts: mk([['rec', 'Recomendados'], ['low', 'Menor precio'], ['high', 'Mayor precio'], ['new', 'Más recientes']], 'sort'),
-clear: () => this.setState({ type: 'Todos', price: 'all', sort: 'rec' })
+clear: () => this.setState({ type: 'Todos', price: 'all', sort: 'rec' }),
+menuOpen: st.menuOpen,
+toggleMenu: () => this.setState({ menuOpen: !st.menuOpen }),
+closeMenu: () => this.setState({ menuOpen: false }),
+filtersClass: st.filtersOpen ? 'filters open' : 'filters',
+toggleFilters: () => this.setState({ filtersOpen: !st.filtersOpen }),
+filtersLabel: (st.filtersOpen ? 'Ocultar filtros' : 'Filtros y precio') + (st.price !== 'all' ? ' (1)' : '')
 };
 }
 }
