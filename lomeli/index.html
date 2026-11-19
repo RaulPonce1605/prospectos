@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automotriz Lomelí — Seminuevos en Aguascalientes</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#B50E26}a:hover{color:#850A1C}
+h1,h2,h3{font-family:'Archivo',system-ui,sans-serif;margin:0;color:#111111;letter-spacing:-0.01em}
+p{margin:0}
+</style>
+</helmet>
+<div style="font-family: 'Inter', system-ui, sans-serif; color: #1A1A1A; background: #FFFFFF; font-size: 1rem; line-height: 1.55">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #ECECEC; position: sticky; top: 0; z-index: 20">
+<nav style="max-width: 1280px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#inicio" style="text-decoration: none; display: flex; align-items: center"><img src="./assets/2ebc563b1d8e90ce8cdf48e9d683e557.png" alt="Automotriz Lomelí" style="display: block; width: 64px; height: 64px"></a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px; font-weight: 600; font-size: 0.9375rem">
+<a href="#inventario" style="text-decoration: none; color: #1A1A1A">Comprar</a>
+<a href="#financiamiento" style="text-decoration: none; color: #1A1A1A">Financiamiento</a>
+<a href="#sucursales" style="text-decoration: none; color: #1A1A1A">Sucursales</a>
+<a href="#nosotros" style="text-decoration: none; color: #1A1A1A">Nosotros</a>
+<a href="https://wa.me/524499078817" style="text-decoration: none; background: #C8102E; color: #FFFFFF; padding: 11px 20px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Escríbenos</a>
+</div>
+</nav>
+</header>
+
+<section id="inicio" style="max-width: 1280px; margin: 0 auto; padding: 20px 24px 0">
+<div style="background: #111111; border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); align-items: center">
+<div style="padding: clamp(32px, 5vw, 64px); display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; align-items: center; gap: 14px"><img src="./assets/2ebc563b1d8e90ce8cdf48e9d683e557.png" alt="" style="display: block; width: 72px; height: 72px"><span style="border: 1px solid #C8102E; color: #FFFFFF; font-weight: 600; font-size: 0.8125rem; padding: 6px 14px; border-radius: 999px">Más de 30 años en Aguascalientes</span></div>
+<h1 style="color: #FFFFFF; font-size: clamp(2.5rem, 5vw, 3.75rem); line-height: 1.02">La sensación de estrenar, sin pagar precio de nuevo.</h1>
+<p style="color: #CFCFCF; font-size: 1.125rem; max-width: 32rem">Más de 100 seminuevos listos para ti, con opciones de financiamiento y dos sucursales en la ciudad.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="#inventario" style="text-decoration: none; background: #C8102E; color: #FFFFFF; font-weight: 700; padding: 15px 26px; border-radius: 999px">Ver inventario</a>
+<a href="#financiamiento" style="text-decoration: none; color: #FFFFFF; font-weight: 700; padding: 15px 26px; border-radius: 999px; border: 2px solid #FFFFFF">Cotiza tu crédito</a>
+</div>
+</div>
+<img src="./assets/5301ddae2595902fc24edf070d728e5c.jpg" alt="Cupra León 2022 blanco en el lote de Automotriz Lomelí" style="display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover">
+</div>
+</section>
+
+<section id="inventario" style="max-width: 1280px; margin: 0 auto; padding: 32px 24px 88px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div>
+<h2 style="font-size: clamp(1.75rem, 3vw, 2.25rem)">Autos seminuevos en Aguascalientes</h2>
+<p style="color: #5E5E5E">Mostrando {{count}} autos destacados · <a href="https://vehiculos.mercadolibre.com.mx/_CustId_98443579" style="font-weight: 600">Ver el catálogo completo</a></p>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<span style="font-size: 0.875rem; color: #5E5E5E; font-weight: 600">Ordenar:</span>
+<sc-for list="{{sorts}}" as="s" hint-placeholder-count="4">
+<sc-if value="{{s.on}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{s.pick}}" style="font-family: inherit; font-size: 0.875rem; font-weight: 600; min-height: 40px; padding: 8px 14px; border-radius: 999px; border: 1px solid #111111; background: #111111; color: #FFFFFF; cursor: pointer">{{s.label}}</button></sc-if>
+<sc-if value="{{s.off}}" hint-placeholder-val="{{true}}"><button type="button" onClick="{{s.pick}}" style="font-family: inherit; font-size: 0.875rem; font-weight: 600; min-height: 40px; padding: 8px 14px; border-radius: 999px; border: 1px solid #D9D9D9; background: #FFFFFF; color: #1A1A1A; cursor: pointer">{{s.label}}</button></sc-if>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start">
+<aside style="flex: 1 1 260px; max-width: 300px; border: 1px solid #ECECEC; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 22px; box-sizing: border-box">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<p style="font-weight: 700; font-size: 1.0625rem">Filtros</p>
+<button type="button" onClick="{{clear}}" style="font-family: inherit; font-size: 0.875rem; font-weight: 600; background: none; border: none; color: #B50E26; text-decoration: underline; cursor: pointer; min-height: 32px">Limpiar todo</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<p style="font-weight: 700">Tipo de vehículo</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{types}}" as="t" hint-placeholder-count="6">
+<sc-if value="{{t.on}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{t.pick}}" style="font-family: inherit; font-size: 0.875rem; font-weight: 600; min-height: 40px; padding: 8px 14px; border-radius: 999px; border: 2px solid #111111; background: #FFFFFF; color: #111111; cursor: pointer">{{t.label}}</button></sc-if>
+<sc-if value="{{t.off}}" hint-placeholder-val="{{true}}"><button type="button" onClick="{{t.pick}}" style="font-family: inherit; font-size: 0.875rem; font-weight: 500; min-height: 40px; padding: 8px 14px; border-radius: 999px; border: 1px solid #D9D9D9; background: #FFFFFF; color: #1A1A1A; cursor: pointer">{{t.label}}</button></sc-if>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<p style="font-weight: 700">Precio</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{prices}}" as="p" hint-placeholder-count="4">
+<sc-if value="{{p.on}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{p.pick}}" style="font-family: inherit; font-size: 0.9375rem; font-weight: 600; min-height: 40px; padding: 8px 14px; border-radius: 10px; border: 2px solid #111111; background: #F5F5F4; color: #111111; text-align: left; cursor: pointer">{{p.label}}</button></sc-if>
+<sc-if value="{{p.off}}" hint-placeholder-val="{{true}}"><button type="button" onClick="{{p.pick}}" style="font-family: inherit; font-size: 0.9375rem; font-weight: 500; min-height: 40px; padding: 8px 14px; border-radius: 10px; border: 1px solid #ECECEC; background: #FFFFFF; color: #1A1A1A; text-align: left; cursor: pointer">{{p.label}}</button></sc-if>
+</sc-for>
+</div>
+</div>
+<div style="background: #F5F5F4; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<p style="font-weight: 700">¿No encuentras el tuyo?</p>
+<p style="font-size: 0.9375rem; color: #4A4A4A">Dinos qué buscas y te ayudamos a encontrar tu seminuevo ideal.</p>
+<a href="https://wa.me/524499078817?text=Hola%2C%20busco%20un%20seminuevo" style="font-weight: 700">Escríbenos por WhatsApp</a>
+</div>
+</aside>
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<div style="border: 1px dashed #D9D9D9; border-radius: 18px; padding: 40px; text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center">
+<p style="font-weight: 700; font-size: 1.125rem">No hay autos destacados con esos filtros.</p>
+<p style="color: #5E5E5E">Revisa el catálogo completo o escríbenos y te decimos qué tenemos.</p>
+<button type="button" onClick="{{clear}}" style="font-family: inherit; font-weight: 700; min-height: 44px; padding: 10px 20px; border-radius: 999px; border: none; background: #111111; color: #FFFFFF; cursor: pointer">Limpiar filtros</button>
+</div>
+</sc-if>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 22px">
+<sc-for list="{{cars}}" as="c" hint-placeholder-count="9">
+<article style="display: flex; flex-direction: column; gap: 10px">
+<div style="position: relative">
+<img src="{{c.img}}" alt="{{c.alt}}" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; background: #F0F0F0">
+<sc-if value="{{c.hasBadge}}" hint-placeholder-val="{{false}}"><span style="position: absolute; left: 12px; bottom: 12px; background: #C8102E; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; padding: 5px 10px; border-radius: 8px">{{c.badge}}</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<p style="font-size: 0.8125rem; color: #5E5E5E">Aguascalientes</p>
+<p style="font-weight: 700">{{c.year}}</p>
+<h3 style="font-size: 1.1875rem; line-height: 1.2">{{c.name}}</h3>
+<p style="font-size: 0.875rem; color: #5E5E5E">{{c.version}}</p>
+<p style="font-size: 0.875rem; color: #5E5E5E">{{c.km}} km · {{c.trans}}</p>
+</div>
+<p style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.5rem; color: #111111">{{c.price}}</p>
+<a href="{{c.wa}}" style="text-decoration: none; text-align: center; border: 2px solid #111111; color: #111111; font-weight: 700; padding: 10px 14px; border-radius: 999px">Me interesa</a>
+</article>
+</sc-for>
+</div>
+<p style="font-size: 0.8125rem; color: #5E5E5E">Precios y disponibilidad sujetos a cambio. Confirma con un asesor antes de visitarnos.</p>
+</div>
+</div>
+</section>
+
+<section id="financiamiento" style="background: #111111; color: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 88px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<h2 style="color: #FFFFFF; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05">Deja de preguntarte si puedes comprarlo. Empieza por cotizarlo.</h2>
+<p style="color: #CFCFCF; font-size: 1.125rem">Contamos con opciones de financiamiento para que conozcas tus posibilidades antes de decidir.</p>
+<a href="https://wa.me/524499078817?text=Hola%2C%20quiero%20cotizar%20un%20cr%C3%A9dito" style="align-self: flex-start; text-decoration: none; background: #C8102E; color: #FFFFFF; font-weight: 700; padding: 15px 26px; border-radius: 999px">Cotiza tu crédito</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px">
+<div style="background: #1E1E1E; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.25rem; color: #C8102E; line-height: 1">1</span>
+<p style="font-weight: 700">Elige tu auto</p>
+<p style="color: #BDBDBD; font-size: 0.9375rem">Del inventario o dinos qué buscas.</p>
+</div>
+<div style="background: #1E1E1E; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.25rem; color: #C8102E; line-height: 1">2</span>
+<p style="font-weight: 700">Cotiza tu plan</p>
+<p style="color: #BDBDBD; font-size: 0.9375rem">Enganche y mensualidades que te acomoden.</p>
+</div>
+<div style="background: #1E1E1E; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.25rem; color: #C8102E; line-height: 1">3</span>
+<p style="font-weight: 700">Estrena</p>
+<p style="color: #BDBDBD; font-size: 0.9375rem">Te lo entregamos listo para manejar.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="nosotros" style="max-width: 1280px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 36px">
+<h2 style="font-size: clamp(2rem, 4vw, 2.75rem); max-width: 40rem; line-height: 1.08">Por qué comprar en Automotriz Lomelí</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 18px">
+<div style="border: 1px solid #ECECEC; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<p style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1; color: #C8102E">+30</p>
+<p style="font-weight: 700">Años en el mercado</p>
+<p style="color: #5E5E5E">Familias de Aguascalientes nos han confiado su auto por tres décadas.</p>
+</div>
+<div style="border: 1px solid #ECECEC; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<p style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1; color: #C8102E">+100</p>
+<p style="font-weight: 700">Autos disponibles</p>
+<p style="color: #5E5E5E">SUV, sedanes, hatchbacks y pick-ups de las marcas que buscas.</p>
+</div>
+<div style="border: 1px solid #ECECEC; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<p style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1; color: #C8102E">2</p>
+<p style="font-weight: 700">Sucursales</p>
+<p style="color: #5E5E5E">Norte y sur de la ciudad, para que nos visites donde te quede mejor.</p>
+</div>
+<div style="border: 1px solid #ECECEC; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<p style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1; color: #C8102E">$</p>
+<p style="font-weight: 700">Financiamiento</p>
+<p style="color: #5E5E5E">Opciones de crédito para que el auto que quieres sí sea posible.</p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 18px">
+<figure style="margin: 0; background: #F5F5F4; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<span style="color: #C8102E; letter-spacing: 0.1em" aria-label="5 de 5 estrellas">★★★★★</span>
+<blockquote style="margin: 0; font-size: 1.0625rem">“Me ayudaron a encontrar la camioneta que buscaba y a sacar el crédito sin tantas vueltas.”</blockquote>
+<figcaption style="font-size: 0.8125rem; font-weight: 600; color: #5E5E5E">Reseña de ejemplo · reemplazar por una real</figcaption>
+</figure>
+<figure style="margin: 0; background: #F5F5F4; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<span style="color: #C8102E; letter-spacing: 0.1em" aria-label="5 de 5 estrellas">★★★★★</span>
+<blockquote style="margin: 0; font-size: 1.0625rem">“Me respondieron rápido por WhatsApp, fui a verlo el mismo día y me lo llevé.”</blockquote>
+<figcaption style="font-size: 0.8125rem; font-weight: 600; color: #5E5E5E">Reseña de ejemplo · reemplazar por una real</figcaption>
+</figure>
+<figure style="margin: 0; background: #F5F5F4; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<span style="color: #C8102E; letter-spacing: 0.1em" aria-label="5 de 5 estrellas">★★★★★</span>
+<blockquote style="margin: 0; font-size: 1.0625rem">“Buena atención y el auto tal cual lo vi en las fotos. Ya es la segunda vez que compro aquí.”</blockquote>
+<figcaption style="font-size: 0.8125rem; font-weight: 600; color: #5E5E5E">Reseña de ejemplo · reemplazar por una real</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="sucursales" style="background: #F5F5F4">
+<div style="max-width: 1280px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 32px">
+<h2 style="font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.08">Visítanos en nuestras sucursales</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 22px">
+<div style="background: #FFFFFF; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Eugenio+Garza+Sada+50+Los+Pocitos+Aguascalientes" style="position: relative; display: block">
+<svg viewBox="0 0 600 260" role="img" aria-label="Mapa ilustrativo de la sucursal Norte, Av. Eugenio Garza Sada 50, Los Pocitos" style="display: block; width: 100%; height: auto">
+<rect width="600" height="260" fill="#EDEDEB"></rect>
+<rect x="30" y="24" width="150" height="80" rx="6" fill="#E2E2DF"></rect><rect x="220" y="24" width="160" height="80" rx="6" fill="#E2E2DF"></rect><rect x="420" y="24" width="150" height="80" rx="6" fill="#DCE5D6"></rect>
+<rect x="30" y="160" width="150" height="80" rx="6" fill="#E2E2DF"></rect><rect x="220" y="160" width="160" height="80" rx="6" fill="#E2E2DF"></rect><rect x="420" y="160" width="150" height="80" rx="6" fill="#E2E2DF"></rect>
+<line x1="0" y1="132" x2="600" y2="132" stroke="#FFFFFF" stroke-width="30"></line>
+<line x1="200" y1="0" x2="200" y2="260" stroke="#FFFFFF" stroke-width="14"></line><line x1="400" y1="0" x2="400" y2="260" stroke="#FFFFFF" stroke-width="14"></line>
+<text x="40" y="127" fill="#5E5E5E" font-family="Inter, sans-serif" font-size="13" font-weight="600">Av. Eugenio Garza Sada</text>
+<path d="M300 140 c-14 -18 -22 -28 -22 -40 a22 22 0 0 1 44 0 c0 12 -8 22 -22 40 z" fill="#C8102E" stroke="#FFFFFF" stroke-width="3"></path><circle cx="300" cy="100" r="7" fill="#FFFFFF"></circle>
+</svg>
+<span style="position: absolute; right: 12px; bottom: 12px; background: #111111; color: #FFFFFF; font-weight: 700; font-size: 0.8125rem; padding: 8px 12px; border-radius: 999px">Abrir en Google Maps</span>
+</a>
+<div style="padding: 22px; display: flex; flex-direction: column; gap: 6px">
+<h3 style="font-size: 1.375rem">Sucursal Norte</h3>
+<p>Av. Eugenio Garza Sada 50, Los Pocitos, Aguascalientes</p>
+<p style="color: #5E5E5E; font-size: 0.9375rem">Horario: [DÍAS Y HORAS]</p>
+</div>
+</div>
+<div style="background: #FFFFFF; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Aguascalientes+Sur+321+Casa+Blanca+Aguascalientes" style="position: relative; display: block">
+<svg viewBox="0 0 600 260" role="img" aria-label="Mapa ilustrativo de la sucursal Sur, Av. Aguascalientes Sur 321, Casa Blanca" style="display: block; width: 100%; height: auto">
+<rect width="600" height="260" fill="#EDEDEB"></rect>
+<rect x="24" y="30" width="110" height="200" rx="6" fill="#E2E2DF"></rect><rect x="180" y="30" width="170" height="80" rx="6" fill="#E2E2DF"></rect><rect x="180" y="150" width="170" height="80" rx="6" fill="#E2E2DF"></rect>
+<rect x="400" y="30" width="176" height="80" rx="6" fill="#E2E2DF"></rect><rect x="400" y="150" width="176" height="80" rx="6" fill="#DCE5D6"></rect>
+<line x1="157" y1="0" x2="157" y2="260" stroke="#FFFFFF" stroke-width="30"></line>
+<line x1="134" y1="130" x2="600" y2="130" stroke="#FFFFFF" stroke-width="14"></line><line x1="375" y1="0" x2="375" y2="260" stroke="#FFFFFF" stroke-width="14"></line>
+<text x="168" y="248" fill="#5E5E5E" font-family="Inter, sans-serif" font-size="13" font-weight="600">Av. Aguascalientes Sur</text>
+<path d="M157 140 c-14 -18 -22 -28 -22 -40 a22 22 0 0 1 44 0 c0 12 -8 22 -22 40 z" fill="#C8102E" stroke="#FFFFFF" stroke-width="3"></path><circle cx="157" cy="100" r="7" fill="#FFFFFF"></circle>
+</svg>
+<span style="position: absolute; right: 12px; bottom: 12px; background: #111111; color: #FFFFFF; font-weight: 700; font-size: 0.8125rem; padding: 8px 12px; border-radius: 999px">Abrir en Google Maps</span>
+</a>
+<div style="padding: 22px; display: flex; flex-direction: column; gap: 6px">
+<h3 style="font-size: 1.375rem">Sucursal Sur</h3>
+<p>Av. Aguascalientes Sur 321, Casa Blanca, Aguascalientes</p>
+<p style="color: #5E5E5E; font-size: 0.9375rem">Horario: [DÍAS Y HORAS]</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 88px 24px">
+<div style="background: #C8102E; border-radius: 28px; padding: clamp(32px, 6vw, 60px); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 40rem">
+<h2 style="color: #FFFFFF; font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.05">Tu próximo auto ya te está esperando.</h2>
+<p style="color: #FFE3E7; font-size: 1.125rem">Mándanos mensaje y te ayudamos a encontrar tu seminuevo ideal.</p>
+</div>
+<a href="https://wa.me/524499078817" style="text-decoration: none; background: #FFFFFF; color: #B50E26; font-weight: 800; padding: 16px 28px; border-radius: 999px">WhatsApp 449 907 8817</a>
+</div>
+</section>
+
+<footer style="background: #111111; color: #BDBDBD">
+<div style="max-width: 1280px; margin: 0 auto; padding: 48px 24px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<img src="./assets/2ebc563b1d8e90ce8cdf48e9d683e557.png" alt="Automotriz Lomelí" style="display: block; width: 96px; height: 96px">
+<p>Seminuevos en Aguascalientes desde hace más de 30 años.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<p style="font-weight: 700; color: #FFFFFF">Sucursales</p>
+<p>Norte: Av. Eugenio Garza Sada 50, Los Pocitos</p>
+<p>Sur: Av. Aguascalientes Sur 321, Casa Blanca</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<p style="font-weight: 700; color: #FFFFFF">Síguenos</p>
+<a href="https://www.instagram.com/automotriz.lomeli/" style="color: #BDBDBD">Instagram</a>
+<a href="https://linktr.ee/AutomotrizLomeli" style="color: #BDBDBD">Facebook y TikTok</a>
+<a href="https://vehiculos.mercadolibre.com.mx/_CustId_98443579" style="color: #BDBDBD">Catálogo en Mercado Libre</a>
+</div>
+</div>
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px 24px; font-size: 0.8125rem; color: #8A8A8A">© 2026 Automotriz Lomelí · Aguascalientes, Ags.</div>
+</footer>
+
+<a href="https://wa.me/524499078817" aria-label="Escríbenos por WhatsApp" style="position: fixed; right: 24px; bottom: 24px; z-index: 30; width: 60px; height: 60px; border-radius: 999px; background: #1F9D55; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.25)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"></path></svg></a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4600}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { type: 'Todos', price: 'all', sort: 'rec' };
+}
+renderVals() {
+const B = '/_blob/';
+const CARS = [
+{ id: 'gladiator', img: B + '2e73ef8f2b684138a4bf294c3619af7a', year: 2023, name: 'Jeep · Gladiator', version: 'Mojave 4x4, 3.6', km: 27000, trans: 'Automática', price: 1069000, type: 'Pick-Up' },
+{ id: 'cupra', img: './assets/5301ddae2595902fc24edf070d728e5c.jpg', year: 2022, name: 'Cupra · León', version: '300 hp', km: 49000, trans: 'Automática', price: 509000, type: 'Hatchback' },
+{ id: 'glc', img: B + '11dcb8bd357f2181305aa3f81fd8f6d7', year: 2022, name: 'Mercedes-Benz · GLC 300', version: '2.0 Sport', km: 85000, trans: 'Automática', price: 579000, type: 'SUV' },
+{ id: 'formentor', img: B + '7f4dd88f7193bedbfe08434efdb660ef', year: 2023, name: 'Cupra · Formentor', version: 'VZ 310 hp 4WD', km: 33000, trans: 'DSG', price: 595000, type: 'SUV' },
+{ id: 'xtrail', img: B + '69c086feca311c35a0dcc4971cdcc01b', year: 2025, name: 'Nissan · X-Trail e-Power', version: '1.5 Exclusive', km: 13000, trans: 'CVT', price: 559000, type: 'SUV' },
+{ id: 'x2', img: B + '5c98fe9e45561703f43bacc4c100bc98', year: 2023, name: 'BMW · X2', version: 'sDrive20ia Goldplay', km: 54000, trans: 'Automática', price: 579000, type: 'SUV' },
+{ id: 'glb', img: B + '87290bb48a6830f26a331690086b53f7', year: 2023, name: 'Mercedes-Benz · GLB 200', version: 'Progressive Line', km: 66000, trans: 'Automática', price: 589000, type: 'SUV' },
+{ id: 'tucson', img: B + 'e2de30fd0523ebdadc33498efa0fde23', year: 2024, name: 'Hyundai · Tucson', version: '2.5 GLS', km: 31000, trans: 'Automática', price: 429000, type: 'SUV' },
+{ id: 'a3', img: B + '5079a0bcba5efe50b851ad21f3357816', year: 2023, name: 'Audi · A3 Sedán', version: '35 TFSI Dynamic', km: 33000, trans: 'DSG', price: 435000, type: 'Sedán' },
+{ id: 'seltos', img: B + 'cead7fa35d63669333f2e9f184a07cfc', year: 2023, name: 'Kia · Seltos', version: '1.6 GT-Line', km: 72000, trans: 'Automática', price: 379000, type: 'SUV' },
+{ id: 'odyssey', img: B + '6f518669bf437e6ce5c1876548a1818a', year: 2022, name: 'Honda · Odyssey', version: '3.5 Touring', km: 55000, trans: 'Automática', price: 585000, type: 'Van' },
+{ id: 'tacoma', img: B + '86685738b64289346d79b6c1a8f95d78', year: 2020, name: 'Toyota · Tacoma', version: '3.5 TRD Sport', km: 69000, trans: 'Automática', price: 559000, type: 'Pick-Up' },
+{ id: 'mini', img: B + '37542bd5b84fde74993159bc89659622', year: 2022, name: 'MINI · Cooper', version: 'Chili 5 puertas', km: 41000, trans: 'Automática', price: 349000, type: 'Hatchback' },
+{ id: 'tiguan', img: B + '7652d95372e95091748c597b53c52e8b', year: 2022, name: 'Volkswagen · Tiguan', version: '1.4 Trendline Plus', km: 41000, trans: 'Automática', price: 349000, type: 'SUV' },
+{ id: 'captiva', img: B + '6ef26b0c11d2b40d31a898ed45f69ef7', year: 2023, name: 'Chevrolet · Captiva', version: '1.5 Premier 7 pasajeros', km: 27000, trans: 'CVT', price: 309000, type: 'SUV' }
+];
+const st = this.state;
+const money = (n) => '$' + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+const inPrice = (p) => st.price === 'all' || (st.price === 'a' && p <= 400000) || (st.price === 'b' && p > 400000 && p <= 600000) || (st.price === 'c' && p > 600000);
+let list = CARS.filter((c) => (st.type === 'Todos' || c.type === st.type) && inPrice(c.price));
+if (st.sort === 'low') list = list.slice().sort((a, b) => a.price - b.price);
+if (st.sort === 'high') list = list.slice().sort((a, b) => b.price - a.price);
+if (st.sort === 'new') list = list.slice().sort((a, b) => b.year - a.year || a.km - b.km);
+const cars = list.map((c) => {
+const badge = c.km <= 30000 ? 'Pocos km' : (c.year >= 2024 ? 'Reciente' : '');
+const msg = 'Hola, me interesa el ' + c.name.replace(' · ', ' ') + ' ' + c.year + ' de ' + money(c.price) + ' que vi en su página.';
+return { img: c.img, alt: c.name.replace(' · ', ' ') + ' ' + c.year, year: c.year, name: c.name, version: c.version, km: c.km.toLocaleString('es-MX'), trans: c.trans, price: money(c.price), badge: badge, hasBadge: badge !== '', wa: 'https://wa.me/524499078817?text=' + encodeURIComponent(msg) };
+});
+const mk = (arr, key) => arr.map(([v, label]) => ({ label: label, on: st[key] === v, off: st[key] !== v, pick: () => this.setState({ [key]: v }) }));
+return {
+cars: cars,
+count: cars.length,
+empty: cars.length === 0,
+types: mk([['Todos', 'Todos'], ['SUV', 'SUV'], ['Sedán', 'Sedán'], ['Hatchback', 'Hatchback'], ['Pick-Up', 'Pick-Up'], ['Van', 'Van']], 'type'),
+prices: mk([['all', 'Cualquier precio'], ['a', 'Hasta $400,000'], ['b', '$400,000 a $600,000'], ['c', 'Más de $600,000']], 'price'),
+sorts: mk([['rec', 'Recomendados'], ['low', 'Menor precio'], ['high', 'Mayor precio'], ['new', 'Más recientes']], 'sort'),
+clear: () => this.setState({ type: 'Todos', price: 'all', sort: 'rec' })
+};
+}
+}
+</script>
+</body>
+</html>
